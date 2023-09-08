@@ -8,3 +8,4 @@ branch: main
 
 git 브랜치 전략
 - develop -> staging -> main
+ 
