@@ -1,0 +1,90 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OAuth2 Client Home</title>
+    <script>
+        function getFreeResource() {
+            fetch("http://127.0.0.1:8082/free", {
+                method: "GET",
+                headers: {
+                    Origin: "http://127.0.0.1:8082"
+                }
+            })
+                .then(response => {
+
+                    response.json().then(function (data) {
+                        document.querySelector("#freeResource").append(data.message);
+                        document.querySelector("#freeResource").append(document.createElement('br'));
+                    })
+                })
+        }
+
+        // function token() {
+        //     fetch("http://127.0.0.1:8081/token")
+        //         .then(response => {
+        //             response.json().then(function(data){
+        //                 console.log("text 안에 데이터 = " + data.message);
+        //                 window.localStorage.setItem("access_token", data.message);
+        //
+        //             })
+        //         })
+        // }
+
+        function posts() {
+            fetch("/posts", {
+                method: "GET"
+            })
+                .then(response => {
+                    response.json().then(function (data) {
+                        console.log(data);
+                        for (const prop in data) {
+                            document.querySelector("#posts").append("title=" + data[prop].title);
+                            document.querySelector("#posts").append(document.createElement('br'));
+                            document.querySelector("#posts").append("content=" + data[prop].content);
+                            document.querySelector("#posts").append(document.createElement('br'));
+                            document.querySelector("#posts").append("username=" + data[prop].username);
+                            document.querySelector("#posts").append(document.createElement('br'));
+                            document.querySelector("#posts").append("updatedAt=" + data[prop].updatedAt);
+                            document.querySelector("#posts").append(document.createElement('br'));
+                            document.querySelector("#posts").append(document.createElement('br'));
+                        }
+                    })
+                })
+        }
+
+        // function hasAccessToken() {
+        //     if (document.cookie.match("access_token")) {
+        //         location.href = "/";
+        //     }
+        // }
+        //
+        // hasAccessToken();
+    </script>
+</head>
+<body>
+    <div>OAuth2.0 Client</div>
+    <div>
+        <a th:href="@{http://127.0.0.1:8081/oauth2/authorization/springOAuth2}">로그인</a>
+    </div>
+
+    <br />
+
+    <div>
+        <input type="button" onclick="getFreeResource()" value="인증 없이 가져올 수 있는 리소스">
+        <div id="freeResource"></div>
+    </div>
+
+    <div>
+        <form action="#">
+<!--            <p><input type="button" onclick="token()" value="access token"></p>-->
+            <p><input type="button" onclick="posts()" value="게시글"></p>
+        </form>
+
+        <div id="posts"></div>
+        <br><br>
+    </div>
+
+</body>
+</html>

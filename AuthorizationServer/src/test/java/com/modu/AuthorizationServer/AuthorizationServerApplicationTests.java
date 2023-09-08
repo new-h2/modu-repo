@@ -1,4 +1,4 @@
-package com.modu.AuthorizationServer;
+package com.modu.authorizationServer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

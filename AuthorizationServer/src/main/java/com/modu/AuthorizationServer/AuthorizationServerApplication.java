@@ -1,4 +1,4 @@
-package com.modu.AuthorizationServer;
+package com.modu.authorizationServer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
