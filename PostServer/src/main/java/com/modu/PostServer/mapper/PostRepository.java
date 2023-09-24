@@ -14,4 +14,9 @@ public interface PostRepository {
     List<PostDTO> getPostOne(long postId);
 
     void deletePost(long postId);
+
+    int insertPost(PostDTO postdto);
+
+    void updatePost(PostDTO postdto);
+
 }

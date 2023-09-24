@@ -3,7 +3,6 @@ package com.modu.PostServer.controller;
 import com.modu.PostServer.model.PostDTO;
 import com.modu.PostServer.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,22 +29,25 @@ public class PostController {
     }
 
     @GetMapping("/posts/insert")
-    public String postInsertPage() {
+    public String postInsertPage(Model model) {
         /* 게시글 작성페이지 이동*/
+        PostDTO postdto = new PostDTO();
+        model.addAttribute("postdto", postdto);
         return "postInsert";
     }
 
 
-    @PostMapping("/posts/{postId}")
-    public String postInsert() {
+    @PostMapping("/posts/insertp")
+    public String postInsert(PostDTO postdto) {
         /* 게시글 작성 */
-        // 작성 로직 끝나면  "redirect:/postlist";로 보내기
-        return  "redirect:/postList";
+        int result = postService.insertPost(postdto);
+        return  "redirect:/posts";
     }
 
     @GetMapping("/posts/update")
-    public String postUpdatePage() {
+    public String postUpdatePage(Model model,PostDTO postdto) {
         /* 게시글 수정페이지 이동*/
+        model.addAttribute("postdto",postdto);
         return "postUpdate";
     }
 
@@ -53,7 +55,6 @@ public class PostController {
     @PutMapping("/posts/{postId}")
     public String postUpdate( @PathVariable("postId") long postId) {
         /* 게시글 수정*/
-        System.out.println("게시글 수정완료");
         return "redirect:/postList";
     }
 

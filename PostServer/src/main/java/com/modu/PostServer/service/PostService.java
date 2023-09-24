@@ -23,4 +23,8 @@ public class PostService {
     public void deletePost(long postId) {
         postRepository.deletePost(postId);
     }
+
+    public int insertPost(PostDTO postdto) {
+        return postRepository.insertPost(postdto);
+    }
 }
