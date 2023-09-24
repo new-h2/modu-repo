@@ -1,2 +1,24 @@
 server:
   port: 8084
+mybatis:
+  mapper-locations: classpath:mybatis/mappers/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+spring:
+  thymeleaf:
+    cache: false
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template-location: true
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/modu?characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
+

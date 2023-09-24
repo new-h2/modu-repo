@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.modu.PostServer.mapper.PostRepository">
+    <select id="getPostList" resultType="com.modu.PostServer.model.PostDTO">
+        SELECT *
+            FROM post
+        WHERE post_status != 3;
+    </select>
+    <select id="getPostOne" resultType="postdto">
+        SELECT *
+            FROM post
+        WHERE post_id = #{postId}
+    </select>
+    <update id="deletePost">
+        UPDATE post
+            SET post_status = 3
+        WHERE post_id = #{postId}
+    </update>
+</mapper>
