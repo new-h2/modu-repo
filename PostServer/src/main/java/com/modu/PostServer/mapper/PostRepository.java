@@ -10,13 +10,8 @@ import java.util.List;
 @Repository("postrepository")
 public interface PostRepository {
     List<PostDTO> getPostList();
-
-    List<PostDTO> getPostOne(long postId);
-
-    void deletePost(long postId);
-
+    PostDTO getPostOne(long postId);
+    int deletePost(long postId);
     int insertPost(PostDTO postdto);
-
-    void updatePost(PostDTO postdto);
-
+    int updatePost(PostDTO postdto);
 }

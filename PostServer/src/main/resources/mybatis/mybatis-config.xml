@@ -7,5 +7,6 @@
     </settings>
     <typeAliases>
         <typeAlias type="com.modu.PostServer.model.PostDTO" alias="postdto"/>
+        <typeAlias type="com.modu.PostServer.model.LikeDTO" alias="likedto"/>
     </typeAliases>
 </configuration>

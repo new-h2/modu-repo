@@ -12,19 +12,15 @@ import java.util.List;
 public class PostService {
     private final PostRepository postRepository;
 
-    public List<PostDTO> getPostList() {
-        return postRepository.getPostList();
+    public List<PostDTO> getPostList() { return postRepository.getPostList();}
+    public PostDTO getPostOne(long postId) {
+        return (PostDTO) postRepository.getPostOne(postId);
     }
-
-    public List<PostDTO> getPostOne(long postId) {
-        return postRepository.getPostOne(postId);
-    }
-
-    public void deletePost(long postId) {
-        postRepository.deletePost(postId);
-    }
-
+    public int deletePost(long postId) { return postRepository.deletePost(postId);}
     public int insertPost(PostDTO postdto) {
         return postRepository.insertPost(postdto);
+    }
+    public int updatePost(PostDTO postdto) {
+        return postRepository.updatePost(postdto);
     }
 }
