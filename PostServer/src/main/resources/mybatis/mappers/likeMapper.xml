@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.modu.PostServer.mapper.LikeRepository">
+    <!--like -->
+    <insert id="insertHeart" parameterType="likedto">
+        INSERT INTO `Like` (like_member_id,create_at, post_id) VALUES ( #{likeMemberId},now(),#{postId})
+
+    </insert>
+<!--    <delete id="deleteHeart" parameterType="com.modu.PostServer.model.LikeDTO">-->
+<!--        DELETE FROM like WHERE post_id = #{postId} AND like_member_id = #{likeMemberId}-->
+<!--    </delete>-->
+<!--    <select id="countHeartsByPostId" parameterType="long" resultType="int">-->
+<!--        SELECT COUNT(*) FROM like WHERE post_id = #{postId}-->
+<!--    </select>-->
+
+</mapper>
